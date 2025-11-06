@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - Cadastro e Importação</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header"><h2>App Logo</h2></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li class="nav-item"><a href="graficos.html"><i class="fas fa-chart-line"></i> <span>Gráficos</span></a></li>
+                    <li class="nav-item active expanded">
+                        <a href="contatos.html" class="dropdown-toggle"><i class="fas fa-address-book"></i> <span>Contatos</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu" style="display: block;">
+                            <li class="active-sub"><a href="contatos.html#cadastrar">Cadastrar</a></li>
+                            <li><a href="contatos.html#importar">Importar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="atendimento.html"><i class="fas fa-headset"></i> <span>Atendimento</span></a></li>
+                    <li class="nav-item">
+                        <a href="cadastros_gerais.html" class="dropdown-toggle"><i class="fas fa-cog"></i> <span>Cadastros Gerais</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cadastros_gerais.html#usuarios">Usuários</a></li>
+                            <li><a href="cadastros_gerais.html#times">Times</a></li>
+                            <li><a href="cadastros_gerais.html#lead">Lead</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+		<div class="header-left">
+                    <button class="toggle-btn" id="toggle-sidebar-btn"><i class="fas fa-bars"></i></button>
+                    <h1>Página Inicial</h1>
+                </div>
+                
+                <button class="theme-toggle-btn" id="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </header>
+            
+            <div class="content-area">
+                <section class="card" id="cadastrar">
+                    <h2>Cadastrar Novo Contato</h2>
+                    <form class="form-grid" id="cadastroContatoForm">
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone:</label>
+                            <input type="tel" id="telefone" name="telefone">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <button type="submit" class="btn primary-bg">Salvar Contato</button>
+                    </form>
+                </section>
+
+                <section class="card" id="importar">
+                    <h2>Importar Contatos (Excel, CSV)</h2>
+                    <div class="import-area">
+                        <input type="file" id="arquivoImportacao" accept=".csv, .xlsx, .xls">
+                        <button class="btn primary-bg">Importar Arquivo</button>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Contatos Cadastrados</h2>
+                    <div class="table-responsive">
+                        <table class="data-table" id="tabelaContatos">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Endereço</th>
+                                    <th>Telefone</th>
+                                    <th>Email</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>João Silva</td>
+                                    <td>Rua A, 123</td>
+                                    <td>(11) 98765-4321</td>
+                                    <td>joao.silva@exemplo.com</td>
+                                    <td><button class="btn-sm"><i class="fas fa-edit"></i></button> <button class="btn-sm danger-bg"><i class="fas fa-trash"></i></button></td>
+                                </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

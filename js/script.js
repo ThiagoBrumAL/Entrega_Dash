@@ -252,14 +252,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (messageText) {
                 // Cria o elemento da mensagem (usuário do site)
                 const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'user-msg');
+                messageDiv.classList.add('message', 'user-msg', 'flex', 'w-full', 'justify-end');
 
                 const now = new Date();
                 const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
                 messageDiv.innerHTML = `
-                    <p>${messageText}</p>
-                    <span class="message-time">${timeString}</span>
+                    <div class="max-w-[70%] p-3 rounded-xl rounded-br-sm self-end bg-blue-600 text-white dark:bg-blue-700 shadow-sm">
+                        <p class="m-0">${messageText}</p>
+                        <span class="block text-[0.65rem] mt-1 text-right opacity-80 text-white">${timeString}</span>
+                    </div>
                 `;
 
                 chatMessages.appendChild(messageDiv);
@@ -271,14 +273,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Simulação de resposta do cliente
                 setTimeout(() => {
                     const clientResponseDiv = document.createElement('div');
-                    clientResponseDiv.classList.add('message', 'client-msg');
+                    clientResponseDiv.classList.add('message', 'client-msg', 'flex', 'w-full', 'justify-start');
 
                     const nowResponse = new Date();
                     const timeStringResponse = `${nowResponse.getHours().toString().padStart(2, '0')}:${nowResponse.getMinutes().toString().padStart(2, '0')}`;
 
                     clientResponseDiv.innerHTML = `
-                        <p>Obrigado! Entendi. A equipe já está verificando o seu problema.</p>
-                        <span class="message-time">${timeStringResponse}</span>
+                        <div class="max-w-[70%] p-3 rounded-xl rounded-bl-sm self-start bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-50 shadow-sm">
+                            <p class="m-0">Obrigado! Entendi. A equipe já está verificando o seu problema.</p>
+                            <span class="block text-[0.65rem] mt-1 text-right opacity-80 text-gray-600 dark:text-gray-400">${timeStringResponse}</span>
+                        </div>
                     `;
                     chatMessages.appendChild(clientResponseDiv);
                     chatMessages.scrollTop = chatMessages.scrollHeight;

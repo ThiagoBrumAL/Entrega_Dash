@@ -2,159 +2,110 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gráficos - Dashboard de Leads</title>
-    <!-- CSS gerado pelo Tailwind -->
-    <link rel="stylesheet" href="dist/styles.css" />
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Chart.js -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 
-<body>
-    <!-- Container geral: display flex, altura mínima e cores com dark mode -->
-    <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-        <!-- Sidebar: fixa no mobile como drawer, estática no desktop -->
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
+    <div class="flex min-h-screen">
+        <!-- sidebar -->
         <aside id="sidebar"
-            class="bg-white dark:bg-gray-900 fixed inset-y-0 left-0 w-64 -translate-x-full md:translate-x-0 md:static md:flex min-h-screen border-r border-gray-200 dark:border-gray-700 flex-col transition-transform duration-300 z-40">
-            <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">App Logo</h2>
+            class="w-64 bg-white dark:bg-gray-800 shadow-lg flex-shrink-0 fixed h-screen z-50 -translate-x-full md:translate-x-0 md:static border-r border-gray-200 dark:border-gray-700 transition-transform duration-300">
+            <div class="p-5 h-16 flex items-center border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400">App Logo</h2>
             </div>
-
-            <nav class="mt-2">
-                <ul class="space-y-1">
-                    <li>
-                        <a href="index.html"
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition text-gray-700 dark:text-gray-200">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-
-                    <!-- Ativo -->
-                    <li>
-                        <a href="graficos.html"
-                            class="flex items-center gap-3 px-4 py-3 rounded transition font-semibold bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Gráficos</span>
-                        </a>
-                    </li>
-
-                    <!-- Dropdown Contatos (estrutura base; JS já cuida do toggle) -->
-                    <li class="nav-item">
-                        <a href="contatos.html"
-                            class="flex items-center justify-between px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition dropdown-toggle">
-                            <span class="flex items-center gap-3">
-                                <i class="fas fa-address-book"></i>
-                                <span>Contatos</span>
-                            </span>
-                            <i class="fas fa-chevron-down dropdown-icon"></i>
-                        </a>
-                        <ul class="dropdown-menu overflow-hidden transition-[max-height] duration-300 max-h-0">
-                            <li>
-                                <a href="contatos.html#cadastrar"
-                                    class="block px-12 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Cadastrar</a>
-                            </li>
-                            <li>
-                                <a href="contatos.html#importar"
-                                    class="block px-12 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Importar</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="atendimento.html"
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition text-gray-700 dark:text-gray-200">
-                            <i class="fas fa-headset"></i>
-                            <span>Atendimento</span>
-                        </a>
-                    </li>
-
-                    <!-- Dropdown Cadastros -->
-                    <li class="nav-item">
-                        <a href="cadastros_gerais.html"
-                            class="flex items-center justify-between px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition dropdown-toggle">
-                            <span class="flex items-center gap-3">
-                                <i class="fas fa-cog"></i>
-                                <span>Cadastros Gerais</span>
-                            </span>
-                            <i class="fas fa-chevron-down dropdown-icon"></i>
-                        </a>
-                        <ul class="dropdown-menu overflow-hidden transition-[max-height] duration-300 max-h-0">
-                            <li>
-                                <a href="cadastros_gerais.html#usuarios"
-                                    class="block px-12 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Usuários</a>
-                            </li>
-                            <li>
-                                <a href="cadastros_gerais.html#times"
-                                    class="block px-12 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Times</a>
-                            </li>
-                            <li>
-                                <a href="cadastros_gerais.html#lead"
-                                    class="block px-12 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Lead</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <nav class="p-2">
+                <a href="index.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded mb-1">
+                    <i class="fas fa-home w-5"></i><span>Home</span>
+                </a>
+                <a href="graficos.html" class="flex items-center gap-3 px-4 py-3 bg-blue-600 text-white rounded mb-1">
+                    <i class="fas fa-chart-line w-5"></i><span>Gráficos</span>
+                </a>
+                <a href="contatos.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded mb-1">
+                    <i class="fas fa-address-book w-5"></i><span>Contatos</span>
+                </a>
+                <a href="atendimento.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded mb-1">
+                    <i class="fas fa-headset w-5"></i><span>Atendimento</span>
+                </a>
+                <a href="cadastros_gerais.html"
+                    class="flex items-center gap-3 px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                    <i class="fas fa-cog w-5"></i><span>Cadastros</span>
+                </a>
             </nav>
         </aside>
 
-        <!-- Conteúdo principal -->
-        <main class="flex-1">
-            <!-- Header -->
+        <!-- conteudo principal -->
+        <main class="flex-1 flex flex-col min-h-screen md:ml-0">
+            <!-- Header Fixo (NAO ENCOSTO MAIS!) -->
             <header
-                class="flex items-center justify-between bg-white dark:bg-gray-900 p-4 border-b border-gray-200 dark:border-gray-700 shadow">
-                <div class="flex items-center gap-3">
-                    <!-- Botão para abrir/fechar sidebar no mobile -->
-                    <button id="toggle-sidebar-btn"
-                        class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                        <i class="fas fa-bars text-gray-800 dark:text-white"></i>
+                class="bg-white dark:bg-gray-800 h-16 flex items-center justify-between px-5 shadow-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-30">
+                <div class="flex items-center">
+                    <button
+                        class="md:hidden bg-transparent border-none text-2xl text-blue-600 dark:text-blue-400 cursor-pointer mr-5"
+                        id="toggle-sidebar-btn">
+                        <i class="fas fa-bars"></i>
                     </button>
-
-                    <!-- Botão de tema -->
-                    <button id="theme-toggle-btn"
-                        class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                        <span class="sr-only">Alternar tema</span>
-                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
-                        <i class="fas fa-moon text-gray-200 hidden dark:inline"></i>
-                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Dashboard de Gráficos</h1>
+                </div>
+                <button
+                    class="bg-transparent border-none text-xl text-gray-700 dark:text-gray-100 cursor-pointer p-2 rounded hover:text-blue-600 dark:hover:text-blue-400"
+                    id="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
             </header>
 
-            <!-- Área de conteúdo com espaçamento responsivo -->
-            <div class="p-4 sm:p-6 space-y-4">
-                <!-- Card 1 -->
-                <section class="rounded-xl bg-white dark:bg-gray-900 shadow p-4">
-                    <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Visão Geral dos Leads</h2>
-                    <div class="relative w-full h-64 sm:h-72 lg:h-80 overflow-x-auto">
-                        <canvas id="leadsChart" class="w-full h-full"></canvas>
+            <!-- Conteúdo com Scroll -->
+            <div class="flex-1 overflow-auto p-4 md:p-6">
+                <!-- Gráficos -->
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    <!-- Gráfico Principal - Crescimento Leads -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Crescimento de Leads</h3>
+                        </div>
+                        <div class="h-64 md:h-80">
+                            <canvas id="growthChart"></canvas>
+                        </div>
                     </div>
 
-                </section>
-
-                <!-- Cards lado a lado no md+ -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <section class="rounded-xl bg-white dark:bg-gray-900 shadow p-4">
-                        <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Leads por Fonte</h2>
-                        <div class="h-64 sm:h-72">
-                            <canvas id="sourceChart" class="w-full h-full"></canvas>
+                    <!-- Funil de Conversão -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Taxa de Conversão</h3>
+                        <div class="h-64 md:h-80">
+                            <canvas id="funnelChart"></canvas>
                         </div>
-                    </section>
+                    </div>
 
-                    <section class="rounded-xl bg-white dark:bg-gray-900 shadow p-4">
-                        <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Taxa de Conversão Mensal
-                        </h2>
-                        <div class="h-64 sm:h-72">
-                            <canvas id="conversionChart" class="w-full h-full"></canvas>
+                    <!-- Leads por Canal -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Leads por Canal</h3>
+                        <div class="h-64">
+                            <canvas id="channelChart"></canvas>
                         </div>
-                    </section>
+                    </div>
+
+                    <!-- Performance por Região -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Metas Mensais</h3>
+                        <div class="h-64">
+                            <canvas id="regionChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Seu JS com dark mode ajustado para usar a classe 'dark' -->
+    <!-- overlay mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden"></div>
     <script src="js/script.js"></script>
 </body>
 

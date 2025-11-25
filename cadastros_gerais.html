@@ -4,91 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastros Gerais</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dist/styles.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 </head>
-<body>
-    <div class="dashboard-container">
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header"><h2>App Logo</h2></div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                    <li class="nav-item"><a href="graficos.html"><i class="fas fa-chart-line"></i> <span>Gráficos</span></a></li>
-                    <li class="nav-item">
-                        <a href="contatos.html" class="dropdown-toggle"><i class="fas fa-address-book"></i> <span>Contatos</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="contatos.html#cadastrar">Cadastrar!!!</a></li>
-                            <li><a href="contatos.html#importar">Importar</a></li>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
+    <div class="flex min-h-dvh">
+        
+        <aside class="w-[250px] shadow-lg bg-white dark:bg-gray-800 transition-[width,min-width] duration-300 ease flex-shrink-0 min-w-[250px] md:relative fixed h-dvh z-50 transform -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-5 h-[60px] flex items-center border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400">App Logo</h2>
+            </div>
+            <nav class="p-0">
+                <ul class="list-none py-2 px-0">
+                    <li class="nav-item relative">
+                        <a href="index.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-home text-lg w-7"></i> <span class="ml-2">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item relative">
+                        <a href="graficos.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-chart-line text-lg w-7"></i> <span class="ml-2">Gráficos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item relative">
+                        <a href="contatos.html" class="dropdown-toggle flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer whitespace-nowrap">
+                            <i class="fas fa-address-book text-lg w-7"></i> 
+                            <span class="ml-2">Contatos</span> 
+                            <i class="fas fa-chevron-down dropdown-icon ml-auto text-sm transition-transform duration-300"></i>
+                        </a>
+                        <ul class="dropdown-menu list-none bg-gray-50 dark:bg-gray-700 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <li><a href="contatos.html#cadastrar" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Cadastrar</a></li>
+                            <li><a href="contatos.html#importar" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Importar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="atendimento.html"><i class="fas fa-headset"></i> <span>Atendimento</span></a></li>
-                    <li class="nav-item active expanded">
-                        <a href="cadastros_gerais.html" class="dropdown-toggle"><i class="fas fa-cog"></i> <span>Cadastros Gerais</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
-                        <ul class="dropdown-menu" style="display: block;">
-                            <li class="active-sub"><a href="#usuarios">Usuários</a></li>
-                            <li><a href="#times">Times</a></li>
-                            <li><a href="#lead">Lead Status</a></li>
+                    <li class="nav-item relative">
+                        <a href="atendimento.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-headset text-lg w-7"></i> 
+                            <span class="ml-2">Atendimento</span>
+                        </a>
+                    </li>
+                    <li class="nav-item relative active transition-all duration-200">
+                        <a href="cadastros_gerais.html" class="dropdown-toggle flex items-center p-3 px-5 bg-blue-600 dark:bg-blue-700 hover:bg-blue-800 whitespace-nowrap text-white" id="cadastros-dropdown-toggle">
+                            <i class="fas fa-cog text-lg w-7"></i> 
+                            <span class="ml-2">Cadastros Gerais</span> 
+                            <i class="fas fa-chevron-up dropdown-icon ml-auto text-sm transition-transform duration-300"></i>
+                        </a>
+                        <ul class="dropdown-menu list-none bg-blue-50 dark:bg-gray-800 max-h-[500px] overflow-hidden ease-in-out block">
+                            <li><a href="#usuarios" class="block py-2 px-10 text-sm font-semibold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-gray-700">Usuários</a></li>
+                            <li><a href="#times" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Times</a></li>
+                            <li><a href="#lead" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Lead Status</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </aside>
 
-        <main class="main-content">
-            <header class="main-header">
-		<div class="header-left">
-                    <button class="toggle-btn" id="toggle-sidebar-btn"><i class="fas fa-bars"></i></button>
-                    <h1>Página Inicial</h1>
+        <main class="flex-grow flex flex-col w-full">
+            
+            <header class="bg-white dark:bg-gray-800 h-[60px] flex items-center justify-between px-5 shadow-md sticky top-0 z-10 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center">
+                    <button class="bg-transparent border-none text-2xl text-blue-600 dark:text-blue-400 cursor-pointer mr-5 focus:outline-none md:hidden" id="toggle-sidebar-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Cadastros Gerais</h1>
                 </div>
                 
-                <button class="theme-toggle-btn" id="theme-toggle-btn">
-                    <i class="fas fa-sun"></i>
+                <button class="bg-transparent border-none text-xl text-gray-700 dark:text-gray-100 cursor-pointer p-2 rounded hover:text-blue-600 dark:hover:text-blue-400" id="theme-toggle-btn">
+                    <i class="fas fa-sun" id="theme-icon"></i>
                 </button>
             </header>
             
-            <div class="content-area">
-                <section class="card" id="usuarios">
-                    <h2>Usuários do Sistema</h2>
-                    <p>Tabela e formulário de gestão de usuários.</p>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Nome</th><th>Email</th><th>Time</th><th>Ações</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Admin</td><td>admin@app.com</td><td>Gestão</td><td><button class="btn-sm"><i class="fas fa-edit"></i></button></td></tr>
-                        </tbody>
-                    </table>
-                </section>
+            <div class="p-5 flex-grow overflow-y-auto h-[calc(100vh-60px)]">
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6" id="usuarios">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Gestão de Usuários</h2>
+                    </div>
+                    
+                    <form class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="flex flex-col">
+                            <label class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Nome:</label>
+                            <input type="text" class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Email:</label>
+                            <input type="email" class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Time:</label>
+                            <select class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                                <option>Vendas</option>
+                                <option>Marketing</option>
+                                <option>Gestão</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-150 md:col-span-1 md:w-auto w-full mt-2 md:mt-0">
+                            <i class="fas fa-save mr-2"></i> Salvar
+                        </button>
+                    </form>
 
-                <section class="card" id="times">
-                    <h2>Times / Departamentos</h2>
-                    <p>Tabela e formulário de gestão de times.</p>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Nome do Time</th><th>Membros</th><th>Ações</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Vendas</td><td>12</td><td><button class="btn-sm"><i class="fas fa-edit"></i></button></td></tr>
-                        </tbody>
-                    </table>
-                </section>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Nome</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Email</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Time</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Admin</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">admin@app.com</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Gestão</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700 flex gap-2">
+                                        <button class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-white p-2 rounded text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white p-2 rounded text-xs">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-                <section class="card" id="lead">
-                    <h2>Status de Lead</h2>
-                    <p>Tabela e formulário de gestão dos status dos leads (Ex: Novo, Em Contato, Qualificado, Perdido).</p>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Status</th><th>Descrição</th><th>Ações</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Qualificado</td><td>Lead pronto para venda</td><td><button class="btn-sm"><i class="fas fa-edit"></i></button></td></tr>
-                        </tbody>
-                    </table>
-                </section>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6" id="times">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Times / Departamentos</h2>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 mb-4 items-end">
+                        <div class="flex-grow w-full">
+                             <label class="mb-1 block font-semibold text-sm text-gray-700 dark:text-gray-300">Nome do Time:</label>
+                             <input type="text" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-md transition duration-150 w-full md:w-auto">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Nome do Time</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Membros</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Vendas</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">12</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">
+                                        <button class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-white p-2 rounded text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6" id="lead">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Status de Lead</h2>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Status</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Descrição</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Qualificado</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Lead pronto para venda</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">
+                                        <button class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-white p-2 rounded text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
+    
+    <div id="sidebar-overlay" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"></div>
+    
     <script src="js/script.js"></script>
+
 </body>
 </html>

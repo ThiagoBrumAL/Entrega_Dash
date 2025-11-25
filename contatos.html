@@ -4,109 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos - Cadastro e Importação</title>
-    <link rel="stylesheet" href="css/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 </head>
-<body>
-    <div class="dashboard-container">
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header"><h2>App Logo</h2></div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                    <li class="nav-item"><a href="graficos.html"><i class="fas fa-chart-line"></i> <span>Gráficos</span></a></li>
-                    <li class="nav-item active expanded">
-                        <a href="contatos.html" class="dropdown-toggle"><i class="fas fa-address-book"></i> <span>Contatos</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
-                        <ul class="dropdown-menu" style="display: block;">
-                            <li class="active-sub"><a href="contatos.html#cadastrar">Cadastrar</a></li>
-                            <li><a href="contatos.html#importar">Importar</a></li>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
+    <div class="flex min-h-dvh">
+        
+        <aside class="w-[250px] shadow-lg bg-white dark:bg-gray-800 transition-[width,min-width] duration-300 ease flex-shrink-0 min-w-[250px] md:relative fixed h-dvh z-50 transform -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-5 h-[60px] flex items-center border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-blue-600 dark:text-blue-400">App Logo</h2>
+            </div>
+            <nav class="p-0">
+                <ul class="list-none py-2 px-0">
+                    <li class="nav-item relative">
+                        <a href="index.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-home text-lg w-7"></i> 
+                            <span class="ml-2">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item relative">
+                        <a href="graficos.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-chart-line text-lg w-7"></i> 
+                            <span class="ml-2">Gráficos</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item relative active transition-all duration-200">
+                        <a href="contatos.html" class="dropdown-toggle flex items-center p-3 px-5 bg-blue-600 dark:bg-blue-700 hover:bg-blue-800 whitespace-nowrap text-white">
+                            <i class="fas fa-address-book text-lg w-7"></i> 
+                            <span class="ml-2">Contatos</span>
+                            <i class="fas fa-chevron-up dropdown-icon ml-auto text-sm transition-transform duration-300"></i>
+                        </a>
+                        <ul class="dropdown-menu list-none bg-blue-50 dark:bg-gray-800 max-h-[500px] overflow-hidden ease-in-out block">
+                            <li><a href="#cadastrar" class="block py-2 px-10 text-sm font-semibold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-gray-700">Cadastrar</a></li>
+                            <li><a href="#importar" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Importar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="atendimento.html"><i class="fas fa-headset"></i> <span>Atendimento</span></a></li>
-                    <li class="nav-item">
-                        <a href="cadastros_gerais.html" class="dropdown-toggle"><i class="fas fa-cog"></i> <span>Cadastros Gerais</span> <i class="fas fa-chevron-down dropdown-icon"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="cadastros_gerais.html#usuarios">Usuários</a></li>
-                            <li><a href="cadastros_gerais.html#times">Times</a></li>
-                            <li><a href="cadastros_gerais.html#lead">Lead</a></li>
+
+                    <li class="nav-item relative">
+                        <a href="atendimento.html" class="flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 whitespace-nowrap">
+                            <i class="fas fa-headset text-lg w-7"></i> 
+                            <span class="ml-2">Atendimento</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item relative">
+                        <a href="cadastros_gerais.html" class="dropdown-toggle flex items-center p-3 px-5 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer whitespace-nowrap">
+                            <i class="fas fa-cog text-lg w-7"></i> 
+                            <span class="ml-2">Cadastros Gerais</span>
+                            <i class="fas fa-chevron-down dropdown-icon ml-auto text-sm transition-transform duration-300"></i>
+                        </a>
+                        <ul class="dropdown-menu list-none bg-gray-50 dark:bg-gray-700 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <li><a href="cadastros_gerais.html#usuarios" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Usuários</a></li>
+                            <li><a href="cadastros_gerais.html#times" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Times</a></li>
+                            <li><a href="cadastros_gerais.html#lead" class="block py-2 px-10 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600">Lead</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </aside>
 
-        <main class="main-content">
-            <header class="main-header">
-		<div class="header-left">
-                    <button class="toggle-btn" id="toggle-sidebar-btn"><i class="fas fa-bars"></i></button>
-                    <h1>Página Inicial</h1>
+        <main class="flex-grow flex flex-col w-full">
+            
+            <header class="bg-white dark:bg-gray-800 h-[60px] flex items-center justify-between px-5 shadow-md sticky top-0 z-10 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center">
+                    <button class="bg-transparent border-none text-2xl text-blue-600 dark:text-blue-400 cursor-pointer mr-5 focus:outline-none md:hidden" id="toggle-sidebar-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Contatos</h1>
                 </div>
                 
-                <button class="theme-toggle-btn" id="theme-toggle-btn">
-                    <i class="fas fa-sun"></i>
+                <button class="bg-transparent border-none text-xl text-gray-700 dark:text-gray-100 cursor-pointer p-2 rounded hover:text-blue-600 dark:hover:text-blue-400" id="theme-toggle-btn">
+                    <i class="fas fa-sun" id="theme-icon"></i>
                 </button>
             </header>
             
-            <div class="content-area">
-                <section class="card" id="cadastrar">
-                    <h2>Cadastrar Novo Contato</h2>
-                    <form class="form-grid" id="cadastroContatoForm">
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome" required>
+            <div class="p-5 flex-grow overflow-y-auto h-[calc(100vh-60px)]">
+                
+                <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6" id="cadastrar">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Cadastrar Novo Contato</h2>
+                    </div>
+                    
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cadastroContatoForm">
+                        <div class="flex flex-col">
+                            <label for="nome" class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Nome:</label>
+                            <input type="text" id="nome" name="nome" required 
+                                class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                         </div>
-                        <div class="form-group">
-                            <label for="endereco">Endereço:</label>
-                            <input type="text" id="endereco" name="endereco">
+                        <div class="flex flex-col">
+                            <label for="endereco" class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco" 
+                                class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                         </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone:</label>
-                            <input type="tel" id="telefone" name="telefone">
+                        <div class="flex flex-col">
+                            <label for="telefone" class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Telefone:</label>
+                            <input type="tel" id="telefone" name="telefone" 
+                                class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="flex flex-col">
+                            <label for="email" class="mb-1 font-semibold text-sm text-gray-700 dark:text-gray-300">Email:</label>
+                            <input type="email" id="email" name="email" required 
+                                class="p-2.5 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                         </div>
-                        <button type="submit" class="btn primary-bg">Salvar Contato</button>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-md  col-span-1 md:col-span-2 mt-2">
+                            <i class="fas fa-save mr-2"></i> Salvar Contato
+                        </button>
                     </form>
                 </section>
 
-                <section class="card" id="importar">
-                    <h2>Importar Contatos (Excel, CSV)</h2>
-                    <div class="import-area">
-                        <input type="file" id="arquivoImportacao" accept=".csv, .xlsx, .xls">
-                        <button class="btn primary-bg">Importar Arquivo</button>
+                <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6" id="importar">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Importar Contatos (Excel, CSV)</h2>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                        <input type="file" id="arquivoImportacao" accept=".csv, .xlsx, .xls"
+                            class="block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2.5 file:px-4
+                            file:rounded-full file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-blue-50 file:text-blue-700
+                            hover:file:bg-blue-100
+                            dark:file:bg-gray-700 dark:file:text-blue-400 dark:hover:file:bg-gray-600
+                            transition-all">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-md  w-full md:w-auto whitespace-nowrap">
+                            <i class="fas fa-upload mr-2"></i> Importar
+                        </button>
                     </div>
                 </section>
 
-                <section class="card">
-                    <h2>Contatos Cadastrados</h2>
-                    <div class="table-responsive">
-                        <table class="data-table" id="tabelaContatos">
+                <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h2 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Contatos Cadastrados</h2>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Endereço</th>
-                                    <th>Telefone</th>
-                                    <th>Email</th>
-                                    <th>Ações</th>
+                                <tr class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Nome</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Endereço</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Telefone</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Email</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-gray-600 font-semibold">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>João Silva</td>
-                                    <td>Rua A, 123</td>
-                                    <td>(11) 98765-4321</td>
-                                    <td>joao.silva@exemplo.com</td>
-                                    <td><button class="btn-sm"><i class="fas fa-edit"></i></button> <button class="btn-sm danger-bg"><i class="fas fa-trash"></i></button></td>
+                            <tbody class="text-sm">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">João Silva</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Rua A, 123</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">(11) 98765-4321</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">joao.silva@exemplo.com</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700 flex gap-2">
+                                        <button class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-white p-2 rounded text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button> 
+                                        <button class="bg-red-500 hover:bg-red-600 text-white p-2 rounded text-xs">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>
-                                </tbody>
+                                <tr class="bg-gray-50 dark:bg-[#333]/30 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Maria Oliveira</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">Av. B, 456</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">(21) 99876-5432</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700">maria.oliveira@exemplo.com</td>
+                                    <td class="p-3 border-b border-gray-200 dark:border-gray-700 flex gap-2">
+                                        <button class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-white p-2 rounded text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button> 
+                                        <button class="bg-red-500 hover:bg-red-600 text-white p-2 rounded text-xs">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </section>
             </div>
         </main>
     </div>
+
+    <div id="sidebar-overlay" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"></div>
+    
     <script src="js/script.js"></script>
+   
 </body>
 </html>
